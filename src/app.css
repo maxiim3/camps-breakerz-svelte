@@ -1,1 +1,127 @@
 @import 'tailwindcss';
+@plugin "daisyui";
+
+@plugin "daisyui" {
+	logs: true;
+	root: ':root';
+	include: button, badge, input, card;
+	exclude: badge;
+	themes: custom;
+}
+
+@plugin "daisyui/theme" {
+	name: 'custom';
+	default: false;
+	prefersdark: true;
+	color-scheme: dark;
+	--color-primary: #af9d24;
+	--color-primary-content: #0b0900;
+	--color-secondary: #0f7c3f;
+	--color-secondary-content: #d3e4d7;
+	--color-accent: #37cadd;
+	--color-accent-content: #010f11;
+	--color-neutral: #3e383b;
+	--color-neutral-content: #d5d3d4;
+	--color-base-100: #232323;
+	--color-base-200: #1d1d1d;
+	--color-base-300: #171717;
+	--color-base-content: #000000;
+	--color-info: #eeeeee;
+	--color-info-content: #141414;
+	--color-success: #86efac;
+	--color-success-content: #06140b;
+	--color-warning: #facc15;
+	--color-warning-content: #150f00;
+	--color-error: #e81c24;
+	--color-error-content: #130000;
+}
+
+:root {
+	--font-brand: 'TTOctosquares';
+	--font-mono: 'Ubuntu Mono';
+}
+
+@font-face {
+	font-family: var(--brand);
+	src: url('/fonts/TypeType Octosquares Variable.ttf') format('truetype-variations');
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+* {
+	scroll-behavior: smooth;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0%;
+	}
+	to {
+		opacity: 100%;
+	}
+}
+
+@keyframes revealFromTopAndScale {
+	from {
+		opacity: 0%;
+		scale: 300%;
+		transform: translateY(-100%);
+	}
+	to {
+		opacity: 100%;
+		scale: 100%;
+		transform: translateY(0);
+	}
+}
+
+@keyframes revealFromTop {
+	from {
+		opacity: 0%;
+		transform: translateY(-48px);
+	}
+	to {
+		opacity: 100%;
+		transform: translateY(0);
+	}
+}
+
+@keyframes revealFromLeft {
+	from {
+		opacity: 0%;
+		transform: translateX(-100%);
+	}
+	to {
+		opacity: 100%;
+		transform: translateX(0);
+	}
+}
+
+.animation-video {
+	animation: fadeIn 500ms ease-in both;
+}
+
+.animation-heroText {
+	animation: revealFromTop 2s 2s ease-in both;
+}
+
+.animation-logo {
+	animation: revealFromTopAndScale 2s cubic-bezier(0.25, 1, 0.3, 1) both;
+}
+
+.animation-title {
+	animation: revealFromLeft 2s 0.3s cubic-bezier(0.25, 1, 0.3, 1) both;
+}
+
+/* ************************************** */
+/*       Override DaisyUI Border radius         */
+.modal,
+.modal-middle,
+.modal-borrom {
+	.modal-box {
+		border-radius: 0.5rem;
+		max-width: 60rem;
+		width: 100%;
+		@apply sm:max-w-2xl;
+	}
+}
