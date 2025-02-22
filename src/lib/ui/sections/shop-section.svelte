@@ -20,7 +20,7 @@
         </HeaderTitle>
         <div class="flex flex-col items-center justify-center gap-4 text-black">
             <p class="flex flex-col items-center justify-center gap-2 font-normal sm:flex-row">
-                <span> Support Camp Breakerz Crew </span>
+                <span> Support Camp Breakers Crew </span>
                 <LogoBrand classes="inline w-8" />
                 <span> by purshasing our merch </span>
             </p>

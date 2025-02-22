@@ -1,29 +1,43 @@
 <script lang="ts">
     import type {Snippet} from 'svelte'
+    import Iconify from '../molecules/iconify.svelte'
 
     type Props = {
         /** @name vertical @type boolean @description stacked vertically if true. Default horizontally */
         vertical?: boolean
         /** @name to @type string @description Url to redirecto to (optional) */
         to?: string
-        action?: () => void
-        children: Snippet
+        children?: Snippet
         style?: 'soft' | 'ghost' | 'link' | 'outline' | 'dash'
         modifier?: 'square' | 'wide' | 'circle' | 'block'
-        icon?: Snippet
+        icon?: App.IconType
         classes?: string
+        action?: () => void
+        /** Is external link : opens in new tab */
+        external?: boolean
         [key: string]: unknown
     }
 
-    const {vertical, to, action, children, modifier, style, icon, otherProps, classes}: Props =
-        $props()
+    const {
+        vertical,
+        to,
+        action,
+        children,
+        modifier,
+        style,
+        icon,
+        otherProps,
+        classes,
+        external,
+    }: Props = $props()
 </script>
 
 <svelte:element
     this={to ? 'a' : 'button'}
     href={to}
-    target="_blank"
-    rel="noopener noreferrer"
+    target={external ? '_blank' : undefined}
+    rel={external ? 'noopener noreferrer' : undefined}
+    onclick={action}
     class={[
         'btn flex',
         vertical ? 'flex-col' : 'flex-row',
@@ -38,10 +52,12 @@
         style === 'dash' ? 'btn-dash' : '',
         classes,
     ]}
-    {...otherProps as Object}
+    {...otherProps as any}
 >
     {#if icon}
-        {@render icon()}
+        <Iconify {icon} />
     {/if}
-    {@render children()}
+    {#if children}
+        {@render children()}
+    {/if}
 </svelte:element>

@@ -1,22 +1,54 @@
-class VideoManager {
-	private VIDEO_ID = 'X9qAB0y20ps';
-	public autoplay = $state(1);
-	public videoSrc = $derived(
-		`https://www.youtube-nocookie.com/embed/${this.VIDEO_ID}?si=g_81oSxIMmVPALAz&autoplay=${this.autoplay}&controls=0&mute=1&disablekb=1&enablejsapi=1&fs=0&iv_load_policy=3&playlist=${this.VIDEO_ID}&loop=1`
-	);
+const getRandomVideoId = () => {
+    return Math.ceil(Math.random() * 10)
+}
+const concatPath = `/video/cb_0${getRandomVideoId()}`
 
-	public toggleAutoplay = () => {
-		this.autoplay = this.autoplay ? 0 : 1;
-	};
+class VideoManager {
+    public autoplay = $state(false)
+    public videoPlaying = $state(false)
+    public videoSourcePath = concatPath
+    public imagePlaceholder = '/images/donate_us_smiles/donate_us_smiles_01.webp'
+    public video: HTMLVideoElement | undefined
+
+    public toggleAutoplay = () => {
+        this.autoplay = this.autoplay ? false : true
+    }
+
+    public startVideo = async () => {
+        if (!this.video) return
+        if (this.video.paused) {
+            await this.video.play()
+            this.videoPlaying = true
+        }
+    }
+
+    public stopVideo = () => {
+        if (this.video && this.video.paused) {
+            this.video.pause()
+            this.videoPlaying = false
+        }
+    }
+
+    public togglePlay = async () => {
+        if (!this.video) return
+
+        if (this.video.paused) {
+            await this.video.play()
+            this.videoPlaying = true
+        } else {
+            this.video.pause()
+            this.videoPlaying = false
+        }
+    }
 }
 
 /** Singleton */
-let videoManager: VideoManager | undefined;
+let videoManager: VideoManager | undefined
 
 export const useVideoManager = () => {
-	if (!videoManager) videoManager = new VideoManager();
+    if (!videoManager) videoManager = new VideoManager()
 
-	return {
-		videoManager
-	};
-};
+    return {
+        videoManager,
+    }
+}

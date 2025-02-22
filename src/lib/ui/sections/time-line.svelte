@@ -49,7 +49,7 @@
             level={2}
             alignCenter
         >
-            History of Camp Breakerz
+            History of Camp Breakers
         </HeaderTitle>
         <button
             class="btn-outlined btn mx-auto text-white"
@@ -72,7 +72,8 @@
                     class:text-start={key % 2 !== 0}
                     class:text-end={key % 2 === 0}
                 >
-                    <time>{event.date}</time>
+                    <time>{`${event.dateStart}${event?.dateEnd ? ` - ${event.dateEnd}` : ''}`}</time
+                    >
                     <HeaderTitle
                         level={3}
                         marginBottom="SM">{event.status}</HeaderTitle
