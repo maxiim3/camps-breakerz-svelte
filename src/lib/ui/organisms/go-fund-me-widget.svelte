@@ -13,7 +13,7 @@
         script.defer = true // Defer script execution until after the page has loaded
         return script
     }
-    // Ensure the widget script is loaded only after the component is mounted
+
     onMount(() => {
         scriptElement = createScript()
         document.body.appendChild(scriptElement) // Add the script to the document body
