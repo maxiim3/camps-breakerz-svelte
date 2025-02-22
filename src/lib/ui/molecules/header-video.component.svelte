@@ -1,5 +1,5 @@
 <script>
-	import { useVideoManager } from './useVideoManager.svelte.ts';
+	import { useVideoManager } from '$lib/use-video-manager.svelte';
 	const { videoManager } = useVideoManager();
 </script>
 

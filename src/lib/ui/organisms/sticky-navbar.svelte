@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { links } from '$lib/siteData';
+	import { siteLinks } from '$lib/siteData';
 	import { useScrollToTop } from '$lib/utils';
 </script>
 
 <nav
 	class="border/20 fixed bottom-0 z-50 w-full place-self-start justify-self-center bg-black/50 text-white backdrop-blur-sm sm:sticky sm:top-0 sm:py-4"
 >
-	<ul classes="sm:gap-4 flex-row flex justify-evenly sm:justify-center">
-		{#each links as link}
+	<ul class="flex flex-row justify-evenly sm:justify-center sm:gap-4">
+		{#each siteLinks as link}
 			{@const buttonClassList =
 				"btn btn-ghost relative text-xs px-1 sm:px-4 inherit sm:text-sm opacity-90 after:absolute after:-bottom-2 after:left-0 after:h-0.5 after:w-full after:scale-x-0 after:bg-cyan-400 after:content-[''] hover:opacity-100 hover:after:scale-x-100 aria-selected:font-bold aria-selected:after:scale-x-100"}
 			{#if link?.url}
