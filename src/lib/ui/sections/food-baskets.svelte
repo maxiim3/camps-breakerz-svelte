@@ -1,14 +1,8 @@
 <script>
     import EnhancedImage from '../atoms/enhanced-image.svelte'
     import HeaderTitle from '../atoms/header-title.svelte'
+    import GoFundMeWidget from '../organisms/go-fund-me-widget.svelte'
 </script>
-
-<!-- Load module from head -->
-<!-- <script module src="https://www.gofundme.com/static/js/embed.js" defer body="true"></script> -->
-<!--
-<script lang="ts">
-
-</script> -->
 
 <section
     id="food-basket"
@@ -126,10 +120,7 @@
             </div>
 
             <div class="relative flex-grow-0">
-                <div
-                    class="gfm-embed sticky top-8 mx-auto h-[460px] w-fit overflow-hidden bg-transparent p-4"
-                    data-url="https://www.gofundme.com/f/basketsforgaza/widget/large?sharesheet=fundraiser sidebar&attribution_id=sl:61ccbdc5-d3eb-4aa2-ac1a-b9766014769c"
-                ></div>
+                <GoFundMeWidget />
             </div>
         </div>
     </div>

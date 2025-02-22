@@ -1,12 +1,30 @@
 <!doctype html>
-<html lang="en" data-theme="custom">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		%sveltekit.head%
-	</head>
-	<body data-sveltekit-preload-data="hover">
-		<div style="display: contents">%sveltekit.body%</div>
-	</body>
+<html
+    lang="en"
+    data-theme="custom"
+>
+    <head>
+        <meta charset="utf-8" />
+        <!-- <meta
+            http-equiv="Content-Security-Policy"
+            content="
+              default-src 'self';
+              script-src 'self' https://www.gofundme.com 'unsafe-inline' 'https://youtube.com';
+              frame-src 'self' https://www.gofundme.com;
+              style-src 'self' 'unsafe-inline';
+            "
+        /> -->
+        <link
+            rel="icon"
+            href="%sveltekit.assets%/favicon.png"
+        />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1"
+        />
+        %sveltekit.head%
+    </head>
+    <body data-sveltekit-preload-data="hover">
+        <div style="display: contents">%sveltekit.body%</div>
+    </body>
 </html>
