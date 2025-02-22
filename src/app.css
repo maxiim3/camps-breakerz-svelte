@@ -2,121 +2,133 @@
 @plugin "daisyui";
 
 @plugin "daisyui" {
-	logs: true;
-	root: ':root';
-	themes: custom;
+    logs: true;
+    root: ':root';
+    themes: custom;
 }
 
 @plugin "daisyui/theme" {
-	name: 'light';
-	default: true;
-	prefersdark: true;
-	color-scheme: 'dark';
-	--color-base-100: oklch(14% 0.005 285.823);
-	--color-base-200: oklch(21% 0.006 285.885);
-	--color-base-300: oklch(27% 0.006 286.033);
-	--color-base-content: oklch(98% 0.003 247.858);
-	--color-primary: oklch(67% 0.15 85.86);
-	--color-primary-content: oklch(3% 0.03 85.86);
-	--color-secondary: oklch(47% 0.12 146.31);
-	--color-secondary-content: oklch(89% 0.04 146.31);
-	--color-accent: oklch(76% 0.13 196.71);
-	--color-accent-content: oklch(4% 0.02 196.71);
-	--color-neutral: oklch(25% 0.02 0);
-	--color-neutral-content: oklch(84% 0.01 0);
-	--color-info: oklch(93% 0 0);
-	--color-info-content: oklch(8% 0 0);
-	--color-success: oklch(88% 0.17 142.5);
-	--color-success-content: oklch(7% 0.03 142.5);
-	--color-warning: oklch(85% 0.2 85.86);
-	--color-warning-content: oklch(6% 0.06 85.86);
-	--color-error: oklch(54% 0.23 27.07);
-	--color-error-content: oklch(7% 0.04 27.07);
-	--radius-selector: 0.4rem;
-	--radius-field: 0.4rem;
-	--radius-box: 0.4rem;
-	--size-selector: 0.25rem;
-	--size-field: 0.25rem;
-	/* --border: 1px; */
-	--depth: 0;
-	--noise: 0;
+    name: 'light';
+    default: true;
+    prefersdark: true;
+    color-scheme: 'dark';
+    --color-base-100: oklch(14% 0.005 285.823);
+    --color-base-200: oklch(21% 0.006 285.885);
+    --color-base-300: oklch(27% 0.006 286.033);
+    --color-base-content: oklch(98% 0.003 247.858);
+    --color-primary: oklch(67% 0.15 85.86);
+    --color-primary-content: oklch(3% 0.03 85.86);
+    --color-secondary: oklch(47% 0.12 146.31);
+    --color-secondary-content: oklch(89% 0.04 146.31);
+    --color-accent: oklch(76% 0.13 196.71);
+    --color-accent-content: oklch(4% 0.02 196.71);
+    --color-neutral: oklch(25% 0.02 0);
+    --color-neutral-content: oklch(84% 0.01 0);
+    --color-info: oklch(93% 0 0);
+    --color-info-content: oklch(8% 0 0);
+    --color-success: oklch(88% 0.17 142.5);
+    --color-success-content: oklch(7% 0.03 142.5);
+    --color-warning: oklch(85% 0.2 85.86);
+    --color-warning-content: oklch(6% 0.06 85.86);
+    --color-error: oklch(54% 0.23 27.07);
+    --color-error-content: oklch(7% 0.04 27.07);
+    --radius-selector: 0.4rem;
+    --radius-field: 0.4rem;
+    --radius-box: 0.4rem;
+    --size-selector: 0.25rem;
+    --size-field: 0.25rem;
+    /* --border: 1px; */
+    --depth: 0;
+    --noise: 0;
 }
 
 :root {
-	--font-brand: 'TTOctosquares';
-	--font-mono: 'Ubuntu Mono';
+    --font-brand: 'TTOctosquares';
+    --font-mono: 'Ubuntu Mono';
 }
 
 @font-face {
-	font-family: var(--brand);
-	src: url('static/fonts/TypeType Octosquares Variable.ttf') format('truetype-variations');
-	font-weight: 100 900;
-	font-style: normal;
-	font-display: swap;
+    font-family: var(--brand);
+    src: url('static/fonts/TypeType Octosquares Variable.ttf') format('truetype-variations');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
 }
 
 * {
-	scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 @keyframes fadeIn {
-	from {
-		opacity: 0%;
-	}
-	to {
-		opacity: 100%;
-	}
+    from {
+        opacity: 0%;
+    }
+    40% {
+        opacity: 0%;
+    }
+    to {
+        opacity: 100%;
+    }
 }
 
 @keyframes revealFromTopAndScale {
-	from {
-		opacity: 0%;
-		scale: 300%;
-		transform: translateY(-100%);
-	}
-	to {
-		opacity: 100%;
-		scale: 100%;
-		transform: translateY(0);
-	}
+    0% {
+        opacity: 0%;
+        scale: 300%;
+        transform: translateY(-100%);
+    }
+    40% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
+        scale: 100%;
+        transform: translateY(0);
+    }
 }
 
 @keyframes revealFromTop {
-	from {
-		opacity: 0%;
-		transform: translateY(-48px);
-	}
-	to {
-		opacity: 100%;
-		transform: translateY(0);
-	}
+    from {
+        opacity: 0%;
+        transform: translateY(-48px);
+    }
+    40% {
+        opacity: 0%;
+    }
+    to {
+        opacity: 100%;
+        transform: translateY(0);
+    }
 }
 
 @keyframes revealFromLeft {
-	from {
-		opacity: 0%;
-		transform: translateX(-100%);
-	}
-	to {
-		opacity: 100%;
-		transform: translateX(0);
-	}
+    from {
+        opacity: 0%;
+        transform: translateX(-100%);
+    }
+    40% {
+        opacity: 0%;
+    }
+    to {
+        opacity: 100%;
+        transform: translateX(0);
+    }
 }
 
 .animation-video {
-	animation: fadeIn 500ms ease-in both;
+    animation: fadeIn 500ms ease-in both;
 }
 
 .animation-heroText {
-	animation: revealFromTop 2s 2s ease-in both;
+    animation: fadeIn 3s 0.8s ease-in both;
 }
 
 .animation-logo {
-	animation: revealFromTopAndScale 2s cubic-bezier(0.25, 1, 0.3, 1) both;
+    animation: revealFromTopAndScale 3s cubic-bezier(0.25, 1, 0.3, 1) both;
 }
 
 .animation-title {
-	animation: revealFromLeft 2s 0.3s cubic-bezier(0.25, 1, 0.3, 1) both;
+    animation: revealFromTopAndScale 3s 0.5s cubic-bezier(0.25, 1, 0.3, 1) both;
 }
 
 /* ************************************** */
@@ -124,10 +136,10 @@
 .modal,
 .modal-middle,
 .modal-borrom {
-	.modal-box {
-		border-radius: 0.5rem;
-		max-width: 60rem;
-		width: 100%;
-		@apply sm:max-w-2xl;
-	}
+    .modal-box {
+        border-radius: 0.5rem;
+        max-width: 60rem;
+        width: 100%;
+        @apply sm:max-w-2xl;
+    }
 }
