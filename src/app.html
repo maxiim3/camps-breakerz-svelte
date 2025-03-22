@@ -24,7 +24,7 @@
         />
         <meta
             property="og:image"
-            content="https://www.campsbreakers.com/images/cb_academy/cb_academy_school_02.png"
+            content="%sveltekit.assets%/images/cb_academy/cb_academy_school_02.png"
         />
         <meta
             property="og:url"
@@ -40,7 +40,7 @@
         />
         <meta
             property="og:video"
-            content="https://www.campsbreakers.com/video/cb_01.mp4"
+            content="%sveltekit.assets%/video/cb_01.mp4"
         />
         <meta
             property="og:video:width"
@@ -51,14 +51,14 @@
             content="720"
         />
         <!-- <meta
-            http-equiv="Content-Security-Policy"
-            content="
-              default-src 'self';
-              script-src 'self' https://www.gofundme.com 'unsafe-inline' 'https://youtube.com';
-              frame-src 'self' https://www.gofundme.com;
-              style-src 'self' 'unsafe-inline';
-            "
-        /> -->
+http-equiv="Content-Security-Policy"
+content="
+default-src 'self';
+script-src 'self' https://www.gofundme.com 'unsafe-inline' 'https://youtube.com';
+frame-src 'self' https://www.gofundme.com;
+style-src 'self' 'unsafe-inline';
+"
+/> -->
         <link
             rel="icon"
             href="%sveltekit.assets%/favicon.png"
@@ -69,6 +69,7 @@
         />
         %sveltekit.head%
     </head>
+
     <body data-sveltekit-preload-data="hover">
         <div style="display: contents">%sveltekit.body%</div>
     </body>
