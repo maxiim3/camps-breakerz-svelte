@@ -59,7 +59,7 @@
         </button>
     </header>
 
-    <ul class="timeline timeline-vertical timeline-snap-icon max-md:timeline-compact">
+    <ul class="timeline timeline-vertical timeline-snap-icon max-md:timeline-compact w-screen">
         {#each events.sort( (a, b) => (sortReverse ? a.date - b.date : b.date - a.date), ) as event, key}
             <li>
                 <div class="timeline-middle">
