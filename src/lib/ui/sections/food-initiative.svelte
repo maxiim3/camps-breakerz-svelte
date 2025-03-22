@@ -17,7 +17,7 @@
         >
             Food Access Initiative
         </HeaderTitle>
-        <div class="relative flex w-full flex-col items-stretch justify-center px-2 md:flex-row">
+        <div class="relative flex w-full flex-col items-stretch justify-center md:flex-row">
             <div
                 class="prose flex max-w-[65ch] min-w-[30h] flex-1 flex-col gap-4 text-pretty text-white"
             >
@@ -72,10 +72,10 @@
                     difference in the lives of deserving, vulnerable families.
                 </p>
 
-                <div class="my-8 flex flex-col gap-x-1 sm:flex-row">
+                <div class="my-8 flex flex-col gap-1 sm:flex-row">
                     <a
                         href="https://www.gofundme.com/f/basketsforgaza/donate?source=btn_donate"
-                        class="btn btn-warning btn-block mx-auto w-full flex-1 py-2 text-center"
+                        class="btn btn-warning mx-auto w-full flex-1 text-center"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
