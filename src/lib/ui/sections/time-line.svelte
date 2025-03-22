@@ -89,13 +89,13 @@
                                     <button
                                         class="absolute inset-0 cursor-pointer"
                                         onclick={() => openImg(img)}
-                                        aria-label={event.description}
+                                        aria-labelledby="open image"
                                     ></button>
                                     <EnhancedImage
                                         src={img.path}
                                         alt={img.alt}
-                                        width="90"
-                                        height="90"
+                                        width="60"
+                                        height="60"
                                         loading="lazy"
                                     />
                                 </div>
