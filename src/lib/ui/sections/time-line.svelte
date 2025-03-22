@@ -59,9 +59,9 @@
         </button>
     </header>
 
-    <ul class="timeline timeline-vertical timeline-snap-icon max-md:timeline-compact">
+    <section class="timeline timeline-vertical timeline-snap-icon max-md:timeline-compact w-screen">
         {#each events.sort( (a, b) => (sortReverse ? a.date - b.date : b.date - a.date), ) as event, key}
-            <li>
+            <div>
                 <div class="timeline-middle">
                     <div class="h-5 w-5 rounded-full bg-neutral-600"></div>
                 </div>
@@ -89,13 +89,13 @@
                                     <button
                                         class="absolute inset-0 cursor-pointer"
                                         onclick={() => openImg(img)}
-                                        aria-labelledby="open image"
+                                        aria-label={event.description}
                                     ></button>
                                     <EnhancedImage
                                         src={img.path}
                                         alt={img.alt}
-                                        width="60"
-                                        height="60"
+                                        width="90"
+                                        height="90"
                                         loading="lazy"
                                     />
                                 </div>
@@ -107,9 +107,9 @@
                     {/if}
                 </div>
                 <hr />
-            </li>
+            </div>
         {/each}
-    </ul>
+    </section>
 </section>
 {#if showModal && selectedItem}
     <dialog

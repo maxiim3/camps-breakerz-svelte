@@ -15,4 +15,5 @@
     style="ghost"
     icon={iconType}
     classes={`w-12 ${forwardClasses}`}
+    arial-label={videoManager.videoPlaying ? 'Press to pause' : 'Press to play video'}
 ></TheButton>
