@@ -92,12 +92,12 @@
                 </div>
 
                 <div class="align-center flex flex-wrap items-center gap-2">
-                    {#each {length: 6}, index}
-                        {@const videoIndex = index + 1}
+                    {#each {length: 4}, index}
+                        {@const imgIndex = index + 1}
                         <div class="aspect-square w-1/3 flex-grow overflow-hidden">
                             <EnhancedImage
                                 class="w-full object-cover"
-                                src={`/images/food_access_initiative/food_access_initiative_0${videoIndex}.webp`}
+                                src={`/images/food_access_initiative/food_access_initiative_0${imgIndex}.webp`}
                                 alt=""
                             />
                             <!-- quality="40" -->
