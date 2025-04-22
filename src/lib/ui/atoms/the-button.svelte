@@ -1,6 +1,7 @@
 <script lang="ts">
     import type {Snippet} from 'svelte'
     import Iconify from '../molecules/iconify.svelte'
+    import type {ClassValue} from 'svelte/elements'
 
     type Props = {
         /** @name vertical @type boolean @description stacked vertically if true. Default horizontally */
@@ -11,7 +12,7 @@
         style?: 'soft' | 'ghost' | 'link' | 'outline' | 'dash'
         modifier?: 'square' | 'wide' | 'circle' | 'block'
         icon?: App.IconType
-        classes?: string
+        classes?: ClassValue
         action?: () => void
         /** Is external link : opens in new tab */
         external?: boolean
@@ -41,7 +42,7 @@
     class={[
         'btn flex',
         vertical ? 'flex-col' : 'flex-row',
-        modifier === 'square' ? 'btn-square aspect-square h-24 w-24 p-4' : '',
+        modifier === 'square' ? 'btn-square aspect-square size-24 p-4' : '',
         modifier === 'wide' ? 'btn-wide' : '',
         modifier === 'circle' ? 'btn-circle' : '',
         modifier === 'block' ? 'btn-block' : '',
