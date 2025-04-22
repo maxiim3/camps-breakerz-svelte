@@ -72,18 +72,18 @@
                     difference in the lives of deserving, vulnerable families.
                 </p>
 
-                <div class="my-8 flex flex-col gap-1 sm:flex-row">
+                <div class="my-8 flex flex-col gap-x-1 gap-y-3 sm:flex-row">
                     <a
-                        href="https://www.gofundme.com/f/basketsforgaza/donate?source=btn_donate"
-                        class="btn btn-warning mx-auto w-full flex-1 text-center"
+                        href="https://www.gofundme.com/f/etaam-food-aid-initiative-feeding-families-in-gaza/donate?attribution_id=sl:b64b9221-d980-4ed0-bff2-44afbe741fdf&lang=en_US&source=btn_donate"
+                        class="btn btn-warning btn-block mx-auto w-full text-center sm:flex-1"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
                         Donate
                     </a>
                     <a
-                        href="https://www.gofundme.com/f/basketsforgaza"
-                        class="btn btn-link mx-auto w-full flex-1 text-center"
+                        href="https://www.gofundme.com/f/etaam-food-aid-initiative-feeding-families-in-gaza?attribution_id=sl:b64b9221-d980-4ed0-bff2-44afbe741fdf&lang=en_US"
+                        class="btn btn-link mx-auto w-full text-center sm:flex-1"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
@@ -92,9 +92,9 @@
                 </div>
 
                 <div class="align-center flex flex-wrap items-center gap-2">
-                    {#each {length: 4}, index}
+                    {#each {length: 6}, index}
                         {@const imgIndex = index + 1}
-                        <div class="aspect-square w-1/3 flex-grow overflow-hidden">
+                        <div class="aspect-portrait w-1/3 flex-grow overflow-hidden">
                             <EnhancedImage
                                 class="w-full object-cover"
                                 src={`/images/food_access_initiative/food_access_initiative_0${imgIndex}.webp`}
