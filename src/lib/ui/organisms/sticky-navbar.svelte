@@ -10,7 +10,7 @@
 </script>
 
 <nav
-    class="border/20 fixed bottom-0 z-50 w-full place-self-start justify-self-center bg-black/50 text-white backdrop-blur-sm sm:sticky sm:top-0 sm:py-4"
+    class="border/20 fixed bottom-0 z-50 w-full place-self-start justify-self-center bg-black/50 py-3 text-white backdrop-blur-sm sm:sticky sm:top-0 sm:py-4"
 >
     <ul class="flex flex-row justify-evenly sm:justify-center sm:gap-4">
         {#each siteLinks as link}
