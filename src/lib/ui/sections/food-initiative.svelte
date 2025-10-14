@@ -22,8 +22,8 @@
                 class="prose flex max-w-[65ch] min-w-[30h] flex-1 flex-col gap-4 text-pretty text-white"
             >
                 <p>
-                    Welcome to the Et’aam Food Aid Initiative - a community project initiated by the
-                    Camps Breakers Crew & Breakdance School.
+                    Welcome to the Et'aam Food Aid Initiative - a community project initiated by the
+                    Camps Breakerz Crew & Breakdance School.
                 </p>
 
                 <p>

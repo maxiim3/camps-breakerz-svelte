@@ -9,7 +9,7 @@
 
 <HeaderTitle
     level={1}
-    sro={true}>Camp Breakers</HeaderTitle
+    sro={true}>Camps Breakerz</HeaderTitle
 >
 
 <HeaderVideo />
@@ -36,7 +36,7 @@
                 sro={true}>Our Mission</HeaderTitle
             >
             <p class="mx-auto max-w-3xl text-xl text-neutral-50">
-                Camps Breakers takes us back to the origins of hip-hop, using dance as a powerful
+                Camps Breakerz takes us back to the origins of hip-hop, using dance as a powerful
                 tool for expression and healing. With more than 20 years of experience in
                 humanitarian programming, we're committed to bringing positive change through art.
             </p>

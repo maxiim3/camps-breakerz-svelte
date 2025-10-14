@@ -16,7 +16,7 @@ export const events: Node[] = [
         status: 'Foundation',
         dateStart: 2004,
         description:
-            "Camps Breakers was founded in 2004 by brothers Moh Ghraiz and Ahmed Alghariz, who formed the community dance team to represent the Palestinian people and draw attention to their ongoing struggle. CB Crew shares the unique beauty of dance and art with the people Gaza through teaching and performances, in addition to speaking around the world. Since it's creation, the crew has achieved multiple dreams, including the establishment of the first dance school in Nuseirat Refugee Camp, after bombing in 2009 rendered their previous practice studio unusable.",
+            "Camps Breakerz was founded in 2004 by brothers Moh Ghraiz and Ahmed Alghariz, who formed the community dance team to represent the Palestinian people and draw attention to their ongoing struggle. CB Crew shares the unique beauty of dance and art with the people Gaza through teaching and performances, in addition to speaking around the world. Since it's creation, the crew has achieved multiple dreams, including the establishment of the first dance school in Nuseirat Refugee Camp, after bombing in 2009 rendered their previous practice studio unusable.",
         images: [
             {
                 path: '/images/founders/founders_01_ahmed_alghariz_shark.webp',
@@ -69,7 +69,7 @@ export const events: Node[] = [
         status: 'Art Therapy for children',
         dateStart: 2009,
         description:
-            'In 2009, Save The Children partnered with Camps Breakers to provide art therapy programs for children in need of rehabilitation.',
+            'In 2009, Save The Children partnered with Camps Breakerz to provide art therapy programs for children in need of rehabilitation.',
         images: [
             {
                 path: '/images/art_therapy_for_children/art_therapy_for_children_01.webp',
@@ -218,6 +218,14 @@ export const events: Node[] = [
             {
                 path: '/images/battle_of_the_week/battle_of_the_week_02.webp',
                 alt: 'Battle of the Week Competition - Image 2',
+            },
+            {
+                path: '/images/battle_of_the_week/battle_of_the_week_03.jpg',
+                alt: 'Battle of the Week Competition - Image 3',
+            },
+            {
+                path: '/images/battle_of_the_week/battle_of_the_week_04.jpg',
+                alt: 'Battle of the Week Competition - Image 4',
             },
         ],
     },

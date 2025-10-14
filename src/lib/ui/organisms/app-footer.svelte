@@ -2,7 +2,7 @@
     <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
             <div>
-                <h3 class="mb-4 text-xl font-bold">Camps Breakers</h3>
+                <h3 class="mb-4 text-xl font-bold">Camps Breakerz</h3>
                 <p class="text-stone-300">Breaking barriers through dance since 2004</p>
             </div>
 
@@ -46,7 +46,7 @@
         </div>
 
         <div class="mt-8 border-t border-stone-700 pt-8 text-center text-stone-300">
-            <p>&copy; {new Date().getFullYear()} Camps Breakers. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Camps Breakerz. All rights reserved.</p>
         </div>
     </div>
 </footer>

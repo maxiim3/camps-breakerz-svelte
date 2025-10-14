@@ -49,7 +49,7 @@
             level={2}
             alignCenter
         >
-            History of Camp Breakers
+            History of Camps Breakerz
         </HeaderTitle>
         <button
             class="btn-outlined btn mx-auto text-white"
