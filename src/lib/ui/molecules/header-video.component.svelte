@@ -44,7 +44,7 @@
         poster={videoManager.imagePlaceholder}
         loop
         muted
-        class="pointer-events-none absolute inset-0 z-0 h-screen w-screen border object-cover select-none"
+        class="pointer-events-none absolute inset-0 z-0 h-screen w-screen border object-contain select-none"
     >
         <track kind="captions" />
         <source

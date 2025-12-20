@@ -4,128 +4,65 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a SvelteKit 5 single-page application for Camps Breakerz (CB Crew), a Palestinian dance community organization based in Gaza. The site showcases their history, programs, and provides ways to support their mission through donations and merchandise.
+SvelteKit 5 single-page application for Camps Breakerz (CB Crew), a Palestinian dance community from Gaza. Showcases their history, programs, and support options.
 
-**Key Technologies:**
-- SvelteKit 5 with Svelte 5 runes (`$state`, `$props`)
-- TypeScript with strict mode
-- Tailwind CSS 4.0 with DaisyUI (beta v5.0)
-- Vite 6.0
-- Deployed on Vercel using `@sveltejs/adapter-vercel`
+**Stack:** SvelteKit 5 + Svelte 5 runes, TypeScript (strict), Tailwind CSS 4 + DaisyUI beta, Vite 6, Vercel deployment
 
-## Common Commands
+## Commands
 
-### Development
 ```bash
-npm run dev              # Start dev server
-npm run dev -- --open    # Start dev server and open in browser
+npm run dev          # Start dev server
+npm run build        # Production build
+npm run preview      # Preview production build
+npm run check        # Type checking (svelte-check)
+npm run format       # Format with Prettier
+npm run lint         # Check formatting
 ```
 
-### Building & Preview
-```bash
-npm run build            # Build for production
-npm run preview          # Preview production build locally
-```
-
-### Code Quality
-```bash
-npm run check            # Run svelte-check for type checking
-npm run check:watch      # Run svelte-check in watch mode
-npm run format           # Format code with Prettier
-npm run lint             # Check formatting with Prettier
-```
-
-### SvelteKit
-```bash
-npm run prepare          # Sync SvelteKit types (runs automatically on install)
-```
+**Note:** No test framework is configured.
 
 ## Architecture
 
-### Single-Page Application Structure
+### Single-Page App Flow
+`src/routes/+page.svelte` → `SinglePageApplication` component → composes all sections
 
-The app is structured as a true single-page application with all content sections rendered on one page:
-
-- **Entry Point**: `src/routes/+page.svelte` → renders `SinglePageApplication` component
-- **Layout**: `src/routes/+layout.svelte` → applies global styles (`app.css`) and renders footer
-- **Main Content**: `src/lib/ui/pages/single-page-application.svelte` → composes all sections
-
-### Component Organization (Atomic Design Pattern)
-
-Components follow atomic design principles in `src/lib/ui/`:
-
-```
-atoms/           - Basic UI elements (buttons, icons, enhanced images)
-molecules/       - Simple composed components (iconify, header-video)
-organisms/       - Complex composed components (navbar, footer, widgets)
-sections/        - Full page sections (landing, timeline, contact, shop)
-containers/      - Layout components (stack)
-pages/           - Page-level compositions (single-page-application)
-```
+### Component Organization (Atomic Design in `src/lib/ui/`)
+- `atoms/` - Basic elements (buttons, icons, images)
+- `molecules/` - Simple compositions (iconify, header-video)
+- `organisms/` - Complex components (navbar, footer, widgets)
+- `sections/` - Full page sections (landing, timeline, contact, shop)
+- `containers/` - Layout components
+- `pages/` - Page-level compositions
 
 ### State Management
+**VideoManager** (`src/lib/use-video-manager.svelte.ts`): Singleton using Svelte 5 `$state` runes for video playback. Randomly selects 1 of 10 background videos on load.
 
-- **VideoManager**: Global singleton for video playback state located at `src/lib/use-video-manager.svelte.ts`
-  - Uses Svelte 5 `$state` runes
-  - Manages autoplay, video playing state, and video element reference
-  - Accessed via `useVideoManager()` hook
-  - Randomly selects 1 of 10 background videos on load
-
-### Data Management
-
-Content is stored as structured TypeScript data in `src/lib/`:
-
-- **siteData.ts**: Navigation links, contact links, and social media (includes TypeScript types)
-- **about-us.data.ts**: Timeline events with images (historical milestones from 2004-present)
-- **food-baskets.data.ts**: Donation options
+### Data Files (`src/lib/`)
+- `siteData.ts` - Navigation, contacts, social links (with types)
+- `about-us.data.ts` - Timeline events (2004-present)
+- `food-baskets.data.ts` - Donation options
 
 ### Styling
+- **Tailwind CSS 4**: No config file - uses `@tailwindcss/vite` plugin
+- **DaisyUI beta**: Theme config in `src/app.css` via `@plugin` directives
+- **Custom font**: TTOctosquares (`static/fonts/`)
+- **Animations**: fadeIn, revealFromTop, revealFromTopAndScale, revealFromLeft
 
-- **Tailwind CSS 4.0**: Configured via `@tailwindcss/vite` plugin (no separate config file)
-- **DaisyUI Beta**: Theme customization in `src/app.css` with custom dark theme
-- **Custom Animations**: Defined in `app.css` (fadeIn, revealFromTop, revealFromTopAndScale, revealFromLeft)
-- **Custom Font**: TTOctosquares variable font loaded from `static/fonts/`
-- **CSS Variables**: `--font-brand`, `--font-mono` defined in `:root`
+### Static Assets (`static/`)
+- `/video/` - 10 videos (cb_01-cb_10) in MP4/WebM
+- `/images/` - Organized by program
+- `/fonts/` - Brand typography
 
-### Static Assets
+## Svelte 5 Syntax
 
-Located in `static/` directory:
-- `/video/` - 10 background videos (cb_01 through cb_10) in .mp4 and .webm formats
-- `/images/` - Organized by program/initiative subdirectories
-- `/fonts/` - Custom brand typography
+- `$state()` instead of `let` for reactivity
+- `$props()` instead of `export let`
+- `{@render children()}` instead of `<slot />`
 
-### TypeScript Configuration
+Reference: https://svelte.dev/docs/svelte/v5-migration-guide
 
-- **Strict mode enabled** (`strict: true`)
-- **Module resolution**: `bundler` (SvelteKit default)
-- **Path aliases**: `$lib` maps to `src/lib` (SvelteKit convention)
-- **Global types**: Defined in `src/app.d.ts`
-  - `App.IconType` - Union type for icon identifiers
-  - `Vue.*` namespace - Legacy types from previous Vue implementation (can be ignored or cleaned up)
+## Notes
 
-## Important Notes
-
-### Svelte 5 Migration
-
-This project uses **Svelte 5** syntax. Key differences from Svelte 4:
-- Use `$state()` instead of `let` for reactive variables
-- Use `$props()` instead of `export let` for component props
-- Use `{@render children()}` instead of `<slot />` for content projection
-- Classes with `$state` properties work for shared state (see VideoManager)
-
-Refer to: https://svelte.dev/docs/svelte/v5-migration-guide
-
-### SvelteKit Conventions
-
-- **Routes**: File-based routing in `src/routes/`
-- **$lib alias**: All imports from `src/lib/` use `$lib/` prefix
-- **Enhanced images**: Use `@sveltejs/enhanced-img` for optimized images
-- **Adapter**: Configured for Vercel static deployment
-
-### DaisyUI Beta Version
-
-Using `daisyui@5.0.0-beta.8` with Tailwind 4.0. Theme configuration syntax differs from stable versions - all theme config is in `app.css` using `@plugin` directives.
-
-### Video Asset Management
-
-The VideoManager randomly selects one of 10 videos (cb_01 through cb_10) on page load. Videos are stored in both MP4 and WebM formats for browser compatibility. Path pattern: `/video/cb_0${randomId}` where randomId is 1-10.
+- **No tailwind.config.js** - Tailwind 4 uses CSS-based config
+- **Global types** in `src/app.d.ts`: `App.IconType` union, legacy `Vue.*` namespace (can be removed)
+- **Enhanced images**: Use `@sveltejs/enhanced-img`

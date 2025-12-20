@@ -7,7 +7,7 @@ class VideoManager {
     public autoplay = $state(false)
     public videoPlaying = $state(false)
     public videoSourcePath = concatPath
-    public imagePlaceholder = '/images/donate_us_smiles/donate_us_smiles_01.webp'
+    public imagePlaceholder = '/images/video-fallback.png'
     public video: HTMLVideoElement | undefined
 
     public toggleAutoplay = () => {
