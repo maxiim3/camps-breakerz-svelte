@@ -1,15 +1,15 @@
 import IconEmail from '$lib/ui/atoms/icon-email.svelte'
 import IconInstagram from '$lib/ui/atoms/icon-instagram.svelte'
 import IconFacebook from '$lib/ui/atoms/icon-facebook.svelte'
-import IconLink from '$lib/ui/atoms/icon-link.svelte'
 import IconShoppingBag from '$lib/ui/atoms/icon-shopping-bag.svelte'
 import IconYoutube from '$lib/ui/atoms/icon-youtube.svelte'
-import type {ComponentType} from 'svelte'
+import IconTiktok from '$lib/ui/atoms/icon-tiktok.svelte'
+import type {Component} from 'svelte'
 
 interface Link {
     name: string
     url: string
-    component: ComponentType
+    component: Component
 }
 
 export const contactLinks: Record<string, Link> = {
@@ -21,7 +21,7 @@ export const contactLinks: Record<string, Link> = {
 
     YouTube: {
         name: 'YouTube',
-        url: 'https://www.youtube.com/@gazabboy',
+        url: 'https://www.youtube.com/@campsbreakerz',
         component: IconYoutube,
     },
 
@@ -31,16 +31,16 @@ export const contactLinks: Record<string, Link> = {
         component: IconInstagram,
     },
 
+    TikTok: {
+        name: 'TikTok',
+        url: 'https://www.tiktok.com/@campsbreakerz',
+        component: IconTiktok,
+    },
+
     Facebook: {
         name: 'Facebook',
         url: 'https://www.facebook.com/CampsBreakerz/',
         component: IconFacebook,
-    },
-
-    Linktree: {
-        name: 'Linktree',
-        url: 'https://linktr.ee/cbcrewgf',
-        component: IconLink,
     },
 
     Shop: {
@@ -64,9 +64,9 @@ export const siteLinks: {
         icon: 'information',
     },
     {
-        label: 'Food Access',
-        hash: '#food-access',
-        id: 'food-access',
+        label: 'Donate',
+        hash: '#healing-programs',
+        id: 'healing-programs',
         icon: 'donate',
     },
     {

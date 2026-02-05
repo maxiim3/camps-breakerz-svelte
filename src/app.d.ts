@@ -12,7 +12,7 @@ declare global {
             | 'pause'
             | 'instagram'
             | 'external-link'
-            | 'inktree'
+            | 'tiktok'
             | 'youtube'
             | 'mail'
             | 'message'
