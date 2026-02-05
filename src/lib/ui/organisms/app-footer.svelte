@@ -1,3 +1,7 @@
+<script lang="ts">
+    import {contactLinks} from '$lib/siteData'
+</script>
+
 <footer class="relative bg-stone-900 py-12 text-white">
     <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
@@ -9,24 +13,16 @@
             <div>
                 <h3 class="mb-4 text-xl font-bold">Follow Us</h3>
                 <div class="space-y-2">
-                    <a
-                        href="https://www.instagram.com/campsbreakerz"
-                        target="_blank"
-                        rel="noopener"
-                        class="block hover:text-lime-300">Instagram</a
-                    >
-                    <a
-                        href="https://www.facebook.com/CampsBreakerz"
-                        target="_blank"
-                        rel="noopener"
-                        class="block hover:text-lime-300">Facebook</a
-                    >
-                    <a
-                        href="https://www.youtube.com/@gazabboy"
-                        target="_blank"
-                        rel="noopener"
-                        class="block hover:text-lime-300">YouTube</a
-                    >
+                    {#each Object.entries(contactLinks) as [linkName, link]}
+                        {#if linkName !== 'Email' && linkName !== 'Shop'}
+                            <a
+                                href={link.url}
+                                target="_blank"
+                                rel="noopener"
+                                class="block hover:text-lime-300">{link.name}</a
+                            >
+                        {/if}
+                    {/each}
                 </div>
             </div>
 

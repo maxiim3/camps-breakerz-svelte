@@ -280,4 +280,32 @@ export const events: Node[] = [
             },
         ],
     },
+    {
+        status: 'Colors of Hope',
+        dateStart: 2024,
+        description:
+            'A community program established to provide therapy through drawing, crafting, and graffiti.',
+        images: [
+            {
+                path: '/images/colors_of_hope/colors_of_hope_01.webp',
+                alt: 'Girl proudly showing her colorful cartoon drawing at the Colors of Hope workshop',
+            },
+            {
+                path: '/images/colors_of_hope/colors_of_hope_02.webp',
+                alt: 'Student displaying her creative drawing of people at the Colors of Hope art therapy session',
+            },
+            {
+                path: '/images/colors_of_hope/colors_of_hope_03.webp',
+                alt: 'Young girl holding up her drawing of a character named Lama at the workshop',
+            },
+            {
+                path: '/images/colors_of_hope/colors_of_hope_04.webp',
+                alt: 'Young child focused on drawing during the Colors of Hope therapy program',
+            },
+            {
+                path: '/images/colors_of_hope/colors_of_hope_05.webp',
+                alt: 'Student carefully coloring her artwork during art therapy',
+            },
+        ],
+    },
 ]

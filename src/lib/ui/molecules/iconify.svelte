@@ -93,11 +93,11 @@
         mask-size: 100% 100%;
     }
 
-    .inktree {
+    .tiktok {
         display: inline-block;
         width: 1.5rem;
         height: 1.5rem;
-        --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 10h16M6.5 4.5l11 11m-11 0l11-11M12 10V2m0 13v7'/%3E%3C/svg%3E");
+        --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M16 8.245V15.5a6.5 6.5 0 1 1-5-6.326v3.163a3.5 3.5 0 1 0 2 3.163V2h3a5 5 0 0 0 5 5v3a8 8 0 0 1-5-1.755'/%3E%3C/svg%3E");
         background-color: currentColor;
         -webkit-mask-image: var(--svg);
         mask-image: var(--svg);

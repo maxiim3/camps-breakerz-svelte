@@ -6,52 +6,57 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 SvelteKit 5 single-page application for Camps Breakerz (CB Crew), a Palestinian dance community from Gaza. Showcases their history, programs, and support options.
 
-**Stack:** SvelteKit 5 + Svelte 5 runes, TypeScript (strict), Tailwind CSS 4 + DaisyUI beta, Vite 6, Vercel deployment
+**Stack:** SvelteKit 5 + Svelte 5 runes, TypeScript (strict), Tailwind CSS 4 + DaisyUI 5 beta, Vite 6, Vercel deployment
 
 ## Commands
 
 ```bash
-npm run dev          # Start dev server
-npm run build        # Production build
-npm run preview      # Preview production build
-npm run check        # Type checking (svelte-check)
-npm run format       # Format with Prettier
-npm run lint         # Check formatting
+bun run dev          # Start dev server
+bun run build        # Production build
+bun run preview      # Preview production build
+bun run check        # Type checking (svelte-check)
+bun run format       # Format with Prettier
+bun run lint         # Check formatting (Prettier)
 ```
 
-**Note:** No test framework is configured.
+No test framework is configured.
 
 ## Architecture
 
-### Single-Page App Flow
-`src/routes/+page.svelte` → `SinglePageApplication` component → composes all sections
+### Rendering Flow
+
+- `+layout.svelte` — imports `app.css`, renders children + `AppFooter`
+- `+page.svelte` — renders `SinglePageApplication` component
+- `SinglePageApplication` — composes all page sections (landing, timeline, healing programs/donate, contact, shop)
 
 ### Component Organization (Atomic Design in `src/lib/ui/`)
-- `atoms/` - Basic elements (buttons, icons, images)
-- `molecules/` - Simple compositions (iconify, header-video)
-- `organisms/` - Complex components (navbar, footer, widgets)
-- `sections/` - Full page sections (landing, timeline, contact, shop)
-- `containers/` - Layout components
-- `pages/` - Page-level compositions
+
+- `atoms/` — Basic elements (buttons, icons, images)
+- `molecules/` — Small compositions (iconify, header-video)
+- `organisms/` — Complex components (navbar, footer)
+- `sections/` — Full page sections (landing, timeline, healing-programs, contact, shop)
+- `containers/` — Layout wrappers
+- `pages/` — Page-level compositions (`single-page-application.svelte`)
 
 ### State Management
-**VideoManager** (`src/lib/use-video-manager.svelte.ts`): Singleton using Svelte 5 `$state` runes for video playback. Randomly selects 1 of 10 background videos on load.
+
+**VideoManager** (`src/lib/use-video-manager.svelte.ts`): Singleton class using Svelte 5 `$state` runes for background video playback. Randomly picks 1 of 10 videos on load. Access via `useVideoManager()`.
 
 ### Data Files (`src/lib/`)
-- `siteData.ts` - Navigation, contacts, social links (with types)
-- `about-us.data.ts` - Timeline events (2004-present)
-- `food-baskets.data.ts` - Donation options
+
+- `siteData.ts` — Navigation links, contact links, social media (typed)
+- `about-us.data.ts` — Timeline events (2004–2024)
 
 ### Styling
-- **Tailwind CSS 4**: No config file - uses `@tailwindcss/vite` plugin
-- **DaisyUI beta**: Theme config in `src/app.css` via `@plugin` directives
-- **Custom font**: TTOctosquares (`static/fonts/`)
-- **Animations**: fadeIn, revealFromTop, revealFromTopAndScale, revealFromLeft
 
-### Static Assets (`static/`)
-- `/video/` - 10 videos (cb_01-cb_10) in MP4/WebM
-- `/images/` - Organized by program
-- `/fonts/` - Brand typography
+- **Tailwind CSS 4**: CSS-based config via `@tailwindcss/vite` plugin — no `tailwind.config.js`
+- **DaisyUI 5 beta**: Single dark theme configured in `src/app.css` via `@plugin` directives
+- **Custom font**: TTOctosquares variable font (`static/fonts/`), referenced as `--font-brand`
+- **Animations**: Defined in `src/app.css` — fadeIn, revealFromTop, revealFromTopAndScale, revealFromLeft
+
+### Vite Plugins (`vite.config.ts`)
+
+Three plugins in order: `sveltekit()`, `tailwindcss()`, `enhancedImages()`
 
 ## Svelte 5 Syntax
 
@@ -61,8 +66,14 @@ npm run lint         # Check formatting
 
 Reference: https://svelte.dev/docs/svelte/v5-migration-guide
 
+### Routing
+
+- `+error.svelte` — Styled error page (status code, message, back-to-home button)
+- `[...rest]/+page.server.ts` — Catch-all redirect to `/` for unknown routes
+
 ## Notes
 
-- **No tailwind.config.js** - Tailwind 4 uses CSS-based config
-- **Global types** in `src/app.d.ts`: `App.IconType` union, legacy `Vue.*` namespace (can be removed)
-- **Enhanced images**: Use `@sveltejs/enhanced-img`
+- **Global types** in `src/app.d.ts`: `App.IconType` union for icon components. Also contains a legacy `Vue.*` namespace with types still used by data structures
+- **Enhanced images**: Use `<enhanced:img>` from `@sveltejs/enhanced-img`
+- **Static assets**: `/video/` has cb_01–cb_10 in MP4/WebM; `/images/` organized by program (colors_of_hope, healing_programs)
+- **Footer** dynamically iterates over `contactLinks` from `siteData.ts` (filters out Email and Shop)
