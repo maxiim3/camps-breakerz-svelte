@@ -25,6 +25,7 @@ The footer (`app-footer.svelte`) has **hardcoded** social links that duplicate `
 ### 1.3 -- Story 1.3 (Add TikTok): Two icon systems in play
 
 The codebase has **two parallel icon systems**:
+
 1. **SVG component files** in `atoms/` (e.g., `icon-instagram.svelte`, `icon-youtube.svelte`) -- used by `contactLinks` in `siteData.ts` via `ComponentType`
 2. **CSS mask-image icons** in `iconify.svelte` (e.g., `.instagram`, `.youtube`, `.inktree`) -- used by `siteLinks` in `siteData.ts` via `App.IconType`
 
@@ -35,6 +36,7 @@ Story 1.3 says "Create icon-tiktok.svelte" (system 1) and "Add 'tiktok' to IconT
 ### 1.4 -- Story 3.2 (Replace Food Access): `EnhancedImage` is not using `<enhanced:img>`
 
 The `enhanced-image.svelte` component has `<enhanced:img>` **commented out** (line 29-33). It falls back to a plain `<img>` tag. This means:
+
 - The `enhancedImages()` Vite plugin is configured but effectively unused
 - All images throughout the site are served as unoptimized static files
 - Adding new images (Stories 2.1, 3.1) will follow the same pattern -- no srcset, no format negotiation, no responsive sizing
@@ -44,9 +46,11 @@ This is not a blocker for the current stories, but it means Story 2.1's instruct
 ### 1.5 -- Story 3.2 (Replace Food Access): GoFundMe widget has a bug in cleanup
 
 In `go-fund-me-widget.svelte` (line 24), the cleanup function has a logic error:
+
 ```ts
-if (scriptElement) return  // BUG: should be `if (!scriptElement)`
+if (scriptElement) return // BUG: should be `if (!scriptElement)`
 ```
+
 This means the injected `<script>` tag is **never cleaned up** on component unmount. If the widget is removed (Story 3.2), this bug becomes moot. But if the widget is kept or updated, the leak persists.
 
 ### 1.6 -- Story 3.2: GoFundMe widget points to a DIFFERENT campaign than the section links
@@ -66,7 +70,9 @@ In `time-line.svelte` line 63, the template does `events.sort(...)` directly. `.
 As described in Contraindication 1.2. Without this, every social link change requires edits in two places.
 
 **Suggested story:**
+
 > **Story 1.0 -- Refactor footer to consume contactLinks from siteData.ts**
+>
 > - Import `contactLinks` in `app-footer.svelte`
 > - Replace hardcoded "Follow Us" links with iteration over `contactLinks` (filtering for social platforms)
 > - Remove hardcoded URLs
@@ -83,6 +89,7 @@ Add acceptance criterion: "Only add `'tiktok'` to `IconType` union and `iconify.
 ### 2.4 -- Missing: Story 3.2 acceptance criteria -- old food access images
 
 Story 3.2 replaces the section content but does not address the 6 existing images in `static/images/food_access_initiative/`. Add acceptance criteria:
+
 - Decide: archive or delete `static/images/food_access_initiative/` directory
 - If deleted, verify no other component references these paths
 
@@ -112,6 +119,7 @@ The `<enhanced:img>` tag is disabled. All images are served as static files from
 ### 3.2 -- Deployment: GoFundMe embed script injection
 
 The GoFundMe widget dynamically injects a third-party script (`gofundme.com/static/js/embed.js`). This has several risks:
+
 - **CSP (Content Security Policy):** If Vercel headers restrict script-src, the embed will fail silently
 - **Performance:** Third-party script blocks rendering in the food/healing section
 - **Reliability:** If GoFundMe changes their embed API, the widget breaks with no build-time warning
@@ -140,6 +148,7 @@ The GoFundMe URL `https://gofund.me/3799cb423` appears to have a trailing `3` --
 **Recommendation: Yes, rename.**
 
 Rationale:
+
 - The component will contain entirely different content (different title, body, images, links)
 - The filename `food-initiative.svelte` will be actively misleading for future maintainers
 - The rename affects exactly 2 files: the component itself and its import in `single-page-application.svelte` (line 7, 21)
@@ -153,6 +162,7 @@ Impact: Minimal. Two import paths change. No routing implications. No external r
 **Recommendation: Remove the embed widget. Use direct link only.**
 
 Rationale:
+
 1. The current widget has a **bug** (script never cleaned up on unmount)
 2. It injects a **third-party script** with no CSP compatibility guarantee
 3. The widget URL (`basketsforgaza`) is already pointing to a **stale campaign** -- different from the section's own donate links
@@ -167,6 +177,7 @@ Implementation: Remove the `GoFundMeWidget` component import and usage from the 
 **Recommendation: Delete it.**
 
 Rationale:
+
 1. It is **imported by zero components** (confirmed via grep -- no file imports `donationOptions` or `handleDonation`)
 2. Its `handleDonation` function is a **stub** (`console.log` only) -- never implemented
 3. Its `image` paths reference `/images/donations/food-basket.jpg`, `/images/donations/dance-education.jpg`, `/images/donations/community.jpg` -- **none of these directories/files exist** in `static/images/`
@@ -179,19 +190,19 @@ This file is dead code with references to nonexistent assets. Delete it to avoid
 
 ## 5. Summary of Recommended Changes to Stories
 
-| # | Story | Change |
-|---|-------|--------|
-| 1 | New Story 1.0 | Refactor `app-footer.svelte` to import and render from `contactLinks` |
-| 2 | Story 1.1 | Add AC: remove `.inktree` CSS class from `iconify.svelte` |
-| 3 | Story 1.1 | Add AC: verify `contact-us.svelte` layout with one fewer social link |
-| 4 | Story 1.3 | Clarify: only add `'tiktok'` to `IconType` + `iconify.svelte` if needed in navbar |
-| 5 | Story 3.2 | Add AC: update ALL GoFundMe URLs (3 locations), or remove widget entirely |
-| 6 | Story 3.2 | Add AC: decide fate of `static/images/food_access_initiative/` directory |
-| 7 | Story 3.2 | Add AC: specify source of new body text content |
-| 8 | Story 3.2 | Verify GoFundMe short URL `3799cb423` resolves correctly |
-| 9 | Story 3.3 | Add AC: decide whether `icon: 'donate'` is still appropriate or needs changing |
-| 10 | New Story | Delete `food-baskets.data.ts` (dead code, references nonexistent assets) |
-| 11 | New Story | Delete `go-fund-me-widget.svelte` (if embed is dropped per recommendation) |
+| #   | Story         | Change                                                                            |
+| --- | ------------- | --------------------------------------------------------------------------------- |
+| 1   | New Story 1.0 | Refactor `app-footer.svelte` to import and render from `contactLinks`             |
+| 2   | Story 1.1     | Add AC: remove `.inktree` CSS class from `iconify.svelte`                         |
+| 3   | Story 1.1     | Add AC: verify `contact-us.svelte` layout with one fewer social link              |
+| 4   | Story 1.3     | Clarify: only add `'tiktok'` to `IconType` + `iconify.svelte` if needed in navbar |
+| 5   | Story 3.2     | Add AC: update ALL GoFundMe URLs (3 locations), or remove widget entirely         |
+| 6   | Story 3.2     | Add AC: decide fate of `static/images/food_access_initiative/` directory          |
+| 7   | Story 3.2     | Add AC: specify source of new body text content                                   |
+| 8   | Story 3.2     | Verify GoFundMe short URL `3799cb423` resolves correctly                          |
+| 9   | Story 3.3     | Add AC: decide whether `icon: 'donate'` is still appropriate or needs changing    |
+| 10  | New Story     | Delete `food-baskets.data.ts` (dead code, references nonexistent assets)          |
+| 11  | New Story     | Delete `go-fund-me-widget.svelte` (if embed is dropped per recommendation)        |
 
 ---
 

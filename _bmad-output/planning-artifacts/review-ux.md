@@ -44,6 +44,7 @@ This is the most consequential UX decision in the entire update.
 **Current state:** The section has a two-column layout. Left side: prose text + "Donate" button + "Visit the GoFundMe page" link + image gallery. Right side: GoFundMe embedded widget (loaded via external script injection in `go-fund-me-widget.svelte`).
 
 **What the embed provides that a link does not:**
+
 - Progress bar showing how much has been raised (social proof)
 - Donor count (social proof)
 - Recent donations (social proof + urgency)
@@ -51,6 +52,7 @@ This is the most consequential UX decision in the entire update.
 - The visitor never leaves the page to see campaign details
 
 **What the embed costs:**
+
 - External script injection (performance hit, potential CSP issues)
 - Layout instability as the embed loads asynchronously
 - The widget URL currently points to `basketsforgaza` while the donate button points to `etaam-food-aid-initiative` -- these are **different campaigns**. This is already a problem in the current site.
@@ -78,6 +80,7 @@ Price-anchored donation tiers are a **proven conversion pattern** for charity si
 The existing timeline entries display images as small 60x60 thumbnails that open in a lightbox modal on click. This pattern works well for documentation-style photos (the founder portraits, the academy classes). Five images of girls with their drawings fits this pattern.
 
 **Concerns:**
+
 - The existing thumbnail buttons use `aria-labelledby="open image"` which is incorrect (`aria-labelledby` should reference an element ID, not contain label text). This is a pre-existing accessibility bug, but adding 5 more images amplifies it. Should be `aria-label="Open full image: [alt text]"`.
 - The alt text for the new images should be descriptive and specific: "Girl displaying her drawing of [subject]" rather than generic "Colors of Hope Program - Image 1". These are **children's art** -- the alt text should convey what makes each image distinct. This matters both for accessibility and for SEO.
 - Five thumbnails at 60x60 will display as a row of tiny squares. On mobile within a `timeline-box` with `max-w-xl`, they may wrap awkwardly. The existing entries with 7+ images (Emergency Response Team, CB Academy) already face this. Verify the wrapping behavior works acceptably with 5 images.
@@ -87,6 +90,7 @@ The existing timeline entries display images as small 60x60 thumbnails that open
 The collage replaces the image gallery that currently exists in the food section (6 images in a 3-column flex grid). A single hero image is a different visual pattern.
 
 **Recommendations:**
+
 - The collage should be **full-width or near-full-width** within the content column, not constrained to a small area. A collage by definition has multiple subjects compressed into one image; at small sizes it becomes noise.
 - Provide responsive image sizes. A collage with fine details will degrade on mobile if served at desktop resolution and downscaled.
 - The collage should be placed **above the body text**, not below it. The current food section puts text first and images last, which buries the emotional impact. For a "Support Healing Through Art" section, the visual should lead. Show children creating art, then explain, then ask for money.
@@ -107,6 +111,7 @@ The current section displays 6 food access images. These will be removed entirel
 **Ordering in `contactLinks`:** The current order is Email, YouTube, Instagram, Facebook, Linktree, Shop. The "Follow Us" section in `contact-us.svelte` filters out Email and Shop, rendering: YouTube, Instagram, Facebook, Linktree. After changes: YouTube, Instagram, Facebook, TikTok.
 
 **Recommended order:** Instagram, TikTok, YouTube, Facebook. Rationale:
+
 - Instagram is CB Crew's most active and relevant platform (referenced directly in the food section text as `@campsbreakerz`)
 - TikTok should be adjacent to Instagram as they share a similar content format (short video)
 - YouTube for longer-form content
@@ -153,6 +158,7 @@ However, looking at the existing Emergency Response Team entry in the timeline, 
 ### Monthly Donation Ask
 
 The 4th paragraph is a call to action for monthly donations. This is a specific conversion goal (recurring revenue) that requires more than just text. The stories do not mention:
+
 - A way to distinguish one-time vs. monthly donation
 - Whether GoFundMe supports recurring donations (it does, but the link needs to specifically target that option)
 - Visual emphasis on the monthly ask (it should not be buried in a paragraph -- it should be a distinct UI element)
@@ -194,6 +200,7 @@ Also rename or remove `food-baskets.data.ts` accordingly (see Q3).
 ### Q2: GoFundMe widget -- keep embed or direct link?
 
 **Replace embed with direct link.** Rationale:
+
 - The current embed loads an external script that injects content asynchronously -- performance cost, layout shift, and a dependency on GoFundMe's infrastructure
 - The embed URL (`basketsforgaza`) does not match the campaign the buttons link to (`etaam-food-aid-initiative`) -- this is a pre-existing bug that indicates the embed is not maintained
 - The new campaign may have a different GoFundMe URL entirely; the embed would need updating regardless
@@ -204,6 +211,7 @@ Also rename or remove `food-baskets.data.ts` accordingly (see Q3).
 ### Q3: `food-baskets.data.ts` -- remove or repurpose?
 
 **Repurpose** into `healing-programs.data.ts` with updated donation tiers relevant to art therapy:
+
 - $25: "Provide art supplies for a child for one month"
 - $50: "Fund a week of art therapy sessions"
 - $100: "Sponsor a month of healing programs for a group"
@@ -216,19 +224,19 @@ If repurposed, the tiers should actually be rendered in the UI this time (they a
 
 ## 8. Summary of Recommended Story Additions/Changes
 
-| # | Recommendation | Priority | Relates to |
-|---|---------------|----------|------------|
-| 1 | Add acceptance criteria for alt text on all new images (Colors of Hope + collage) | High | Stories 2.1, 3.1 |
-| 2 | Add story: Update footer social links (currently hardcoded separately from siteData.ts) | High | Epic 1 |
-| 3 | Add story or subtask: Bridge language connecting food aid to healing programs | Medium | Story 3.2 |
-| 4 | Add story: Repurpose donation tiers for healing programs and render them in the UI | Medium | Epic 3 |
-| 5 | Add story: Design monthly donation CTA as a distinct UI element, not body text | Medium | Story 3.2 |
-| 6 | Reconsider nav label: "Support Us" or "Donate" instead of "Healing Programs" | Medium | Story 3.3 |
-| 7 | Add acceptance criteria: Verify navbar does not overflow at medium breakpoints with new label | Low | Story 3.3 |
-| 8 | Tech debt: Refactor footer to consume siteData.ts instead of hardcoding links | Low | Epic 1 |
-| 9 | Tech debt: Fix `aria-labelledby` on timeline image buttons | Low | Story 2.2 |
-| 10 | Add story: Hero collage placed above body text, not below | Medium | Story 3.1 |
-| 11 | Consider adding a "Food Aid Initiative" timeline entry to preserve that history | Low | Epic 3 |
+| #   | Recommendation                                                                                | Priority | Relates to       |
+| --- | --------------------------------------------------------------------------------------------- | -------- | ---------------- |
+| 1   | Add acceptance criteria for alt text on all new images (Colors of Hope + collage)             | High     | Stories 2.1, 3.1 |
+| 2   | Add story: Update footer social links (currently hardcoded separately from siteData.ts)       | High     | Epic 1           |
+| 3   | Add story or subtask: Bridge language connecting food aid to healing programs                 | Medium   | Story 3.2        |
+| 4   | Add story: Repurpose donation tiers for healing programs and render them in the UI            | Medium   | Epic 3           |
+| 5   | Add story: Design monthly donation CTA as a distinct UI element, not body text                | Medium   | Story 3.2        |
+| 6   | Reconsider nav label: "Support Us" or "Donate" instead of "Healing Programs"                  | Medium   | Story 3.3        |
+| 7   | Add acceptance criteria: Verify navbar does not overflow at medium breakpoints with new label | Low      | Story 3.3        |
+| 8   | Tech debt: Refactor footer to consume siteData.ts instead of hardcoding links                 | Low      | Epic 1           |
+| 9   | Tech debt: Fix `aria-labelledby` on timeline image buttons                                    | Low      | Story 2.2        |
+| 10  | Add story: Hero collage placed above body text, not below                                     | Medium   | Story 3.1        |
+| 11  | Consider adding a "Food Aid Initiative" timeline entry to preserve that history               | Low      | Epic 3           |
 
 ---
 

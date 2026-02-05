@@ -24,11 +24,13 @@ No test framework is configured.
 ## Architecture
 
 ### Rendering Flow
+
 - `+layout.svelte` — imports `app.css`, renders children + `AppFooter`
 - `+page.svelte` — renders `SinglePageApplication` component
 - `SinglePageApplication` — composes all page sections (landing, timeline, food initiative, contact, shop)
 
 ### Component Organization (Atomic Design in `src/lib/ui/`)
+
 - `atoms/` — Basic elements (buttons, icons, images)
 - `molecules/` — Small compositions (iconify, header-video)
 - `organisms/` — Complex components (navbar, footer, widgets)
@@ -37,20 +39,24 @@ No test framework is configured.
 - `pages/` — Page-level compositions (`single-page-application.svelte`)
 
 ### State Management
+
 **VideoManager** (`src/lib/use-video-manager.svelte.ts`): Singleton class using Svelte 5 `$state` runes for background video playback. Randomly picks 1 of 10 videos on load. Access via `useVideoManager()`.
 
 ### Data Files (`src/lib/`)
+
 - `siteData.ts` — Navigation links, contact links, social media (typed)
 - `about-us.data.ts` — Timeline events (2004–present)
 - `food-baskets.data.ts` — Donation options
 
 ### Styling
+
 - **Tailwind CSS 4**: CSS-based config via `@tailwindcss/vite` plugin — no `tailwind.config.js`
 - **DaisyUI 5 beta**: Single dark theme configured in `src/app.css` via `@plugin` directives
 - **Custom font**: TTOctosquares variable font (`static/fonts/`), referenced as `--font-brand`
 - **Animations**: Defined in `src/app.css` — fadeIn, revealFromTop, revealFromTopAndScale, revealFromLeft
 
 ### Vite Plugins (`vite.config.ts`)
+
 Three plugins in order: `sveltekit()`, `tailwindcss()`, `enhancedImages()`
 
 ## Svelte 5 Syntax
