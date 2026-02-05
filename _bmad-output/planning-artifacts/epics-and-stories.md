@@ -4,7 +4,11 @@
 
 Client request to update the Camps Breakerz website: refresh social links, add a new timeline entry for "Colors of Hope" (2024), and replace the Food Access section with a new "Support Healing Through Art" donation campaign.
 
-## Review Status
+## Status: COMPLETED
+
+All stories implemented, reviewed, and committed (Feb 2026).
+
+### Review History
 
 - Analyst (Mary): authored
 - Architect (Winston): reviewed — 7 contraindications, 7 additions
@@ -36,10 +40,10 @@ Client request to update the Camps Breakerz website: refresh social links, add a
 
 **Acceptance Criteria:**
 
-- [ ] Refactor `src/lib/ui/organisms/app-footer.svelte` to import and iterate over `contactLinks` instead of hardcoding social links
-- [ ] Filter to show only social platforms (exclude Email, Shop) — same logic as `contact-us.svelte`
-- [ ] Preserve existing footer layout, styling, and `hover:text-lime-300` behavior
-- [ ] All current social links (YouTube, Instagram, Facebook, Linktree) still render correctly after refactor
+- [x] Refactor `src/lib/ui/organisms/app-footer.svelte` to import and iterate over `contactLinks` instead of hardcoding social links
+- [x] Filter to show only social platforms (exclude Email, Shop) — same logic as `contact-us.svelte`
+- [x] Preserve existing footer layout, styling, and `hover:text-lime-300` behavior
+- [x] All current social links (YouTube, Instagram, Facebook, Linktree) still render correctly after refactor
 
 **Files:**
 
@@ -56,12 +60,12 @@ Client request to update the Camps Breakerz website: refresh social links, add a
 
 **Acceptance Criteria:**
 
-- [ ] Remove `Linktree` entry from `contactLinks` in `src/lib/siteData.ts`
-- [ ] Remove `IconLink` import from `src/lib/siteData.ts`
-- [ ] Linktree no longer appears in "Follow us" section or footer
-- [ ] Delete `src/lib/ui/atoms/icon-link.svelte` (verify no other references first)
-- [ ] Remove `'inktree'` from `IconType` union in `src/app.d.ts`
-- [ ] Check `src/lib/ui/molecules/iconify.svelte` for any `.inktree` / linktree CSS rules — remove if present
+- [x] Remove `Linktree` entry from `contactLinks` in `src/lib/siteData.ts`
+- [x] Remove `IconLink` import from `src/lib/siteData.ts`
+- [x] Linktree no longer appears in "Follow us" section or footer
+- [x] Delete `src/lib/ui/atoms/icon-link.svelte` (verify no other references first)
+- [x] Remove `'inktree'` from `IconType` union in `src/app.d.ts`
+- [x] Check `src/lib/ui/molecules/iconify.svelte` for any `.inktree` / linktree CSS rules — remove if present
 
 **Files:**
 
@@ -81,8 +85,8 @@ Client request to update the Camps Breakerz website: refresh social links, add a
 
 **Acceptance Criteria:**
 
-- [ ] Update YouTube URL from `https://www.youtube.com/@gazabboy` to `https://www.youtube.com/@campsbreakerz` in `src/lib/siteData.ts`
-- [ ] Verify footer now picks up the change automatically (thanks to Story 1.0 refactor)
+- [x] Update YouTube URL from `https://www.youtube.com/@gazabboy` to `https://www.youtube.com/@campsbreakerz` in `src/lib/siteData.ts`
+- [x] Verify footer now picks up the change automatically (thanks to Story 1.0 refactor)
 
 **Files:**
 
@@ -99,12 +103,12 @@ Client request to update the Camps Breakerz website: refresh social links, add a
 
 **Acceptance Criteria:**
 
-- [ ] Create `src/lib/ui/atoms/icon-tiktok.svelte` — TikTok SVG icon matching existing icon style (consistent size, stroke, viewBox)
-- [ ] Add `'tiktok'` to `IconType` union in `src/app.d.ts`
-- [ ] Add `TikTok` entry to `contactLinks` in `src/lib/siteData.ts` with URL `https://www.tiktok.com/@campsbreakerz` and `component: IconTiktok`
-- [ ] Position TikTok in `contactLinks` object after Instagram (desired display order: Instagram, TikTok, YouTube, Facebook)
-- [ ] TikTok appears in both "Follow us" section and footer automatically
-- [ ] If `iconify.svelte` has a CSS icon system, add corresponding `.tiktok` rule
+- [x] Create `src/lib/ui/atoms/icon-tiktok.svelte` — TikTok SVG icon matching existing icon style (consistent size, stroke, viewBox)
+- [x] Add `'tiktok'` to `IconType` union in `src/app.d.ts`
+- [x] Add `TikTok` entry to `contactLinks` in `src/lib/siteData.ts` with URL `https://www.tiktok.com/@campsbreakerz` and `component: IconTiktok`
+- [x] Position TikTok in `contactLinks` object after Instagram (desired display order: Instagram, TikTok, YouTube, Facebook)
+- [x] TikTok appears in both "Follow us" section and footer automatically
+- [x] If `iconify.svelte` has a CSS icon system, add corresponding `.tiktok` rule
 
 **Files:**
 
@@ -128,10 +132,10 @@ Client request to update the Camps Breakerz website: refresh social links, add a
 
 **Acceptance Criteria:**
 
-- [ ] Create directory `static/images/colors_of_hope/`
-- [ ] Convert `client-request/01.png` through `05.png` to optimized WebP format
-- [ ] Name files consistently: `colors_of_hope_01.webp` through `colors_of_hope_05.webp`
-- [ ] Verify reasonable file sizes (target < 200KB each)
+- [x] Create directory `static/images/colors_of_hope/`
+- [x] Convert `client-request/01.png` through `05.png` to optimized WebP format
+- [x] Name files consistently: `colors_of_hope_01.webp` through `colors_of_hope_05.webp`
+- [x] Verify reasonable file sizes (target < 200KB each)
 
 **Files:**
 
@@ -147,15 +151,15 @@ Client request to update the Camps Breakerz website: refresh social links, add a
 
 **Acceptance Criteria:**
 
-- [ ] Add new `Node` entry to `events` array in `src/lib/about-us.data.ts`
+- [x] Add new `Node` entry to `events` array in `src/lib/about-us.data.ts`
     - `status`: "Colors of Hope"
     - `dateStart`: 2024
     - `description`: "A community program established to provide therapy through drawing, crafting, and graffiti."
     - `images`: array of 5 `Img` objects with paths to `colors_of_hope/` WebP files
-- [ ] Each image has a **descriptive alt text** (not generic "Image 1") — describe what's shown (e.g., "Girl proudly holding her cartoon drawing in the Colors of Hope workshop")
-- [ ] Entry appears correctly in the timeline with images
-- [ ] Image lightbox modal works for new images
-- [ ] Entry positioned chronologically (after 2023 entries)
+- [x] Each image has a **descriptive alt text** (not generic "Image 1") — describe what's shown (e.g., "Girl proudly holding her cartoon drawing in the Colors of Hope workshop")
+- [x] Entry appears correctly in the timeline with images
+- [x] Image lightbox modal works for new images
+- [x] Entry positioned chronologically (after 2023 entries)
 
 **Files:**
 
@@ -176,10 +180,10 @@ Client request to update the Camps Breakerz website: refresh social links, add a
 
 **Acceptance Criteria:**
 
-- [ ] Create directory `static/images/healing_programs/`
-- [ ] Convert `client-request/06.png` (collage) to optimized WebP
-- [ ] Store as `static/images/healing_programs/healing_programs_hero.webp`
-- [ ] Verify reasonable file size
+- [x] Create directory `static/images/healing_programs/`
+- [x] Convert `client-request/06.png` (collage) to optimized WebP
+- [x] Store as `static/images/healing_programs/healing_programs_hero.webp`
+- [x] Verify reasonable file size
 
 **Files:**
 
@@ -195,23 +199,23 @@ Client request to update the Camps Breakerz website: refresh social links, add a
 
 **Acceptance Criteria:**
 
-- [ ] Rename `src/lib/ui/sections/food-initiative.svelte` → `src/lib/ui/sections/healing-programs.svelte`
-- [ ] Update import in `src/lib/ui/pages/single-page-application.svelte` accordingly
-- [ ] Update section `id` from `food-access` to `healing-programs`
-- [ ] Replace section title: "Support Healing Through Art"
-- [ ] Place hero image (collage) **above** body text for emotional impact
-- [ ] Replace all body text with the 4 client-provided paragraphs:
+- [x] Rename `src/lib/ui/sections/food-initiative.svelte` → `src/lib/ui/sections/healing-programs.svelte`
+- [x] Update import in `src/lib/ui/pages/single-page-application.svelte` accordingly
+- [x] Update section `id` from `food-access` to `healing-programs`
+- [x] Replace section title: "Support Healing Through Art"
+- [x] Place hero image (collage) **above** body text for emotional impact
+- [x] Replace all body text with the 4 client-provided paragraphs:
     1. "Currently, our focus is on empowering our students..."
     2. "With adequate funding, we can strengthen..."
     3. "Our committed team, equipped with backgrounds..."
     4. "Thank you for your empathy..."
-- [ ] Replace the 6-image food gallery with the single hero collage image
-- [ ] Update donate button link to `https://gofund.me/3799cb423`
-- [ ] **Remove** the GoFundMe embed widget entirely — delete `src/lib/ui/organisms/go-fund-me-widget.svelte`
-- [ ] Remove GoFundMe widget import from healing-programs component
-- [ ] Add a prominent CTA button for the donation link (not buried in text)
-- [ ] **Delete** `src/lib/food-baskets.data.ts` (dead code, zero consumers)
-- [ ] **Delete** or archive `static/images/food_access_initiative/` directory (old images no longer used)
+- [x] Replace the 6-image food gallery with the single hero collage image
+- [x] Update donate button link to `https://gofund.me/3799cb423`
+- [x] **Remove** the GoFundMe embed widget entirely — delete `src/lib/ui/organisms/go-fund-me-widget.svelte`
+- [x] Remove GoFundMe widget import from healing-programs component
+- [x] Add a prominent CTA button for the donation link (not buried in text)
+- [x] **Delete** `src/lib/food-baskets.data.ts` (dead code, zero consumers)
+- [x] **Delete** or archive `static/images/food_access_initiative/` directory (old images no longer used)
 
 **Files:**
 
@@ -232,12 +236,12 @@ Client request to update the Camps Breakerz website: refresh social links, add a
 
 **Acceptance Criteria:**
 
-- [ ] Update nav entry in `src/lib/siteData.ts`:
+- [x] Update nav entry in `src/lib/siteData.ts`:
     - `label`: "Food Access" → "Donate"
     - `hash`: `#food-access` → `#healing-programs`
     - `id`: `food-access` → `healing-programs`
     - `icon`: keep `'donate'`
-- [ ] Navigation link scrolls correctly to the renamed section
+- [x] Navigation link scrolls correctly to the renamed section
 
 **Files:**
 
@@ -273,6 +277,6 @@ Issues discovered during review, not part of this client request:
 
 - `<enhanced:img>` is commented out in `enhanced-image.svelte` — images ship unoptimized
 - `events.sort()` in `time-line.svelte` mutates the source array in place
-- `ComponentType` import is deprecated in Svelte 5
+- ~~`ComponentType` import is deprecated in Svelte 5~~ — **Fixed** (changed to `Component`)
 - Timeline image buttons have `aria-labelledby="open image"` bug (same label for all)
 - Lightbox modal lacks focus trapping

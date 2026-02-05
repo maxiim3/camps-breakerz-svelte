@@ -27,14 +27,14 @@ No test framework is configured.
 
 - `+layout.svelte` — imports `app.css`, renders children + `AppFooter`
 - `+page.svelte` — renders `SinglePageApplication` component
-- `SinglePageApplication` — composes all page sections (landing, timeline, food initiative, contact, shop)
+- `SinglePageApplication` — composes all page sections (landing, timeline, healing programs/donate, contact, shop)
 
 ### Component Organization (Atomic Design in `src/lib/ui/`)
 
 - `atoms/` — Basic elements (buttons, icons, images)
 - `molecules/` — Small compositions (iconify, header-video)
-- `organisms/` — Complex components (navbar, footer, widgets)
-- `sections/` — Full page sections (landing, timeline, contact, shop)
+- `organisms/` — Complex components (navbar, footer)
+- `sections/` — Full page sections (landing, timeline, healing-programs, contact, shop)
 - `containers/` — Layout wrappers
 - `pages/` — Page-level compositions (`single-page-application.svelte`)
 
@@ -45,8 +45,7 @@ No test framework is configured.
 ### Data Files (`src/lib/`)
 
 - `siteData.ts` — Navigation links, contact links, social media (typed)
-- `about-us.data.ts` — Timeline events (2004–present)
-- `food-baskets.data.ts` — Donation options
+- `about-us.data.ts` — Timeline events (2004–2024)
 
 ### Styling
 
@@ -67,8 +66,14 @@ Three plugins in order: `sveltekit()`, `tailwindcss()`, `enhancedImages()`
 
 Reference: https://svelte.dev/docs/svelte/v5-migration-guide
 
+### Routing
+
+- `+error.svelte` — Styled error page (status code, message, back-to-home button)
+- `[...rest]/+page.server.ts` — Catch-all redirect to `/` for unknown routes
+
 ## Notes
 
 - **Global types** in `src/app.d.ts`: `App.IconType` union for icon components. Also contains a legacy `Vue.*` namespace with types still used by data structures
 - **Enhanced images**: Use `<enhanced:img>` from `@sveltejs/enhanced-img`
-- **Static assets**: `/video/` has cb_01–cb_10 in MP4/WebM; `/images/` organized by program
+- **Static assets**: `/video/` has cb_01–cb_10 in MP4/WebM; `/images/` organized by program (colors_of_hope, healing_programs)
+- **Footer** dynamically iterates over `contactLinks` from `siteData.ts` (filters out Email and Shop)
