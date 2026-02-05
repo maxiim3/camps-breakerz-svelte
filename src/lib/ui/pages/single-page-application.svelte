@@ -4,7 +4,7 @@
     import ContactUs from '$lib/ui/sections/contact-us.svelte'
     import LandingSection from '$lib/ui/sections/landing-section.svelte'
     import ShopSection from '$lib/ui/sections/shop-section.svelte'
-    import FoodInitiative from '../sections/food-initiative.svelte'
+    import HealingPrograms from '../sections/healing-programs.svelte'
 </script>
 
 <!-- TODO update bg video -->
@@ -18,7 +18,7 @@
     <StickyNavbar />
     <!-- TODO add some pics each node event -->
     <TimeLine />
-    <FoodInitiative />
+    <HealingPrograms />
     <ContactUs />
     <!-- TODO add some pics to the merch -->
     <ShopSection />
