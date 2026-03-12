@@ -61,7 +61,7 @@
         </div>
         <div class="mt-12 flex justify-center">
             <a
-                href="https://gofund.me/3799cb423"
+                href="https://chuffed.org/project/170647-colors-of-hope"
                 class="btn btn-warning btn-lg w-full max-w-md text-center text-lg"
                 target="_blank"
                 rel="noopener noreferrer"
