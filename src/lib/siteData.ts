@@ -5,6 +5,7 @@ import IconShoppingBag from '$lib/ui/atoms/icon-shopping-bag.svelte'
 import IconYoutube from '$lib/ui/atoms/icon-youtube.svelte'
 import IconTiktok from '$lib/ui/atoms/icon-tiktok.svelte'
 import type {Component} from 'svelte'
+import {contactPageTitle} from '$lib/contact-copy'
 
 interface Link {
     name: string
@@ -70,7 +71,7 @@ export const siteLinks: {
         icon: 'donate',
     },
     {
-        label: 'Contact',
+        label: contactPageTitle,
         hash: '#contact',
         id: 'contact-page',
         icon: 'mail',

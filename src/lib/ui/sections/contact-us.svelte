@@ -1,6 +1,7 @@
 <script lang="ts">
     import TheButton from '$lib/ui/atoms/the-button.svelte'
     import {contactLinks} from '$lib/siteData'
+    import {contactPageHeadline, contactPageTitle} from '$lib/contact-copy'
     import HeaderTitle from '../atoms/header-title.svelte'
 </script>
 
@@ -15,8 +16,11 @@
             level={2}
             colorContext="light"
         >
-            Contact Us
+            {contactPageTitle}
         </HeaderTitle>
+        <p class="mx-auto mb-8 max-w-[65ch] px-4 text-center text-pretty">
+            {contactPageHeadline}
+        </p>
         <div class="mb-8 flex items-center justify-center gap-2">
             <TheButton
                 to={contactLinks.Email.url}
